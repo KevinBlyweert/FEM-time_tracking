@@ -1,0 +1,256 @@
+:root {
+
+    --blue: hsl(246, 80%, 60%);
+    --light_red_work: hsl(15, 100%, 70%);
+    --soft_blue_play: hsl(195, 74%, 62%);
+    --light_red_study: hsl(348, 100%, 68%);
+    --lime_green_exercise: hsl(145, 58%, 55%);
+    --violet_social: hsl(264, 64%, 52%);
+    --soft_orange_self_care: hsl(43, 84%, 65%);
+    --very_dark_blue: hsl(226, 43%, 10%);
+    --dark_blue: hsl(235, 46%, 20%);
+    --desaturated_blue: hsl(235, 45%, 61%);
+    --pale_blue: hsl(236, 100%, 87%);
+}
+
+* {
+    font-family: "Rubik", sans-serif;
+    color: var(--pale_blue);
+    font-weight: 400;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--very_dark_blue);
+    padding: 1rem;
+    margin: 0;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 20rem;
+    gap: 1.5rem;
+
+    .mainBlock {
+        background-color: var(--dark_blue);
+        height: fit-content;
+
+        .user {
+            padding: 1.5rem;
+            background-color: var(--blue);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1rem;
+
+            img {
+                width: 4rem;
+                height: 4rem;
+                border: 2px solid white;
+                border-radius: 50%;
+            }
+
+            .userInfo {
+                span {
+                    font-size: 0.8rem;
+                }
+
+                h1 {
+                    font-size: 1.2rem;
+                    color: white;
+                    font-weight: 300;
+                }
+            }
+        }
+
+        .timeframes {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            list-style: none;
+            padding: 1rem;
+        }
+    }
+
+    .card {
+
+        &.workCard {
+            background: var(--light_red_work) 90% -10px no-repeat url("./images/icon-work.svg");
+        }
+
+        &.playCard {
+            background: var(--soft_blue_play) 90% -10px no-repeat url("./images/icon-play.svg");
+        }
+
+        &.studyCard {
+            background: var(--light_red_study) 90% -10px no-repeat url("./images/icon-study.svg");
+        }
+
+        &.exerciseCard {
+            background: var(--lime_green_exercise) 90% -10px no-repeat url("./images/icon-exercise.svg");
+        }
+
+        &.socialCard {
+            background: var(--violet_social) 90% -10px no-repeat url("./images/icon-social.svg");
+        }
+
+        &.selfcareCard {
+            background: var(--soft_orange_self_care) 90% -10px no-repeat url("./images/icon-self-care.svg");
+        }
+
+        .cardDetail {
+            position: relative;
+            margin-top: 2rem;
+            background-color: var(--dark_blue);
+            padding: 1.5rem;
+
+            button {
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
+                display: flex;
+                align-items: center;
+                gap: 0.2rem;
+                height: 1.1rem;
+
+                span {
+                    width: 0.3rem;
+                    height: 0.3rem;
+                    border-radius: 50%;
+                    background-color: var(--pale_blue);
+                }
+            }
+
+            h2 {
+                font-size: 1.1rem;
+                color: #fff;
+            }
+
+            .timeDetail {
+                display: flex;
+                flex-direction: column;
+                margin-top: 0.5rem;
+
+                .inactiveDetail {
+                    visibility: collapse;
+                }
+
+                div {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .current {
+                        font-size: 1.5rem;
+                        font-weight: 300;
+                        color: #fff;
+                    }
+
+                    .previous {
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.round {
+    border-radius: 1rem;
+}
+
+.active {
+    color: white;
+}
+
+.btnStyle {
+    border: none;
+    background-color: transparent;
+
+    &:hover {
+        color: white;
+        cursor: pointer;
+    }
+}
+
+@media screen and (min-width : 45rem) {
+    main {
+        grid-template-columns: repeat(4, 10rem);
+
+        .mainBlock {
+            grid-column: 2 / span 2;
+        }
+
+        .card {
+            grid-column: span 2;
+        }
+    }
+}
+
+@media screen and (min-width : 65rem) {
+    main {
+        grid-template-columns: repeat(4, 15rem);
+        grid-template-rows: repeat(2, 15rem);
+
+        .mainBlock {
+            grid-row: 1 / span 2;
+            grid-column: auto;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+
+            .user {
+                flex-direction: column;
+                align-items: start;
+                flex-grow: 1;
+
+                .userInfo {
+                    margin-top: 2rem;
+                }
+
+                h1.userName {
+                    font-size: 2.5rem;
+                    margin-bottom: 3rem;
+                }
+            }
+
+            .timeframes {
+                padding: 2rem;
+                flex-direction: column;
+                align-items: start;
+                font-size: 1.2rem;
+                gap: 1rem;
+            }
+        }
+
+        .card {
+            grid-column: auto;
+
+            .cardDetail {
+                height: 13rem;
+
+                .cardTitle {
+                    font-size: 1.5rem;
+                }
+
+                .timeDetail div {
+                    flex-direction: column;
+                    align-items: start;
+
+                    .current {
+                        font-size: 4rem !important;
+                    }
+
+                    .previous {
+                        font-size: 1.5rem !important;
+                    }
+                }
+            }
+        }
+    }
+}
